@@ -1,0 +1,28 @@
+{
+  "produits": [
+    {
+      "name": "Printer",
+      "price": 300,
+      "selected": true,
+      "id": 2,
+      "available": false,
+      "quantity": "100000"
+    },
+    {
+      "name": "azertyw",
+      "price": "100",
+      "selected": false,
+      "id": 3,
+      "available": true,
+      "quantity": "20"
+    },
+    {
+      "name": "z",
+      "price": 0,
+      "quantity": 0,
+      "selected": true,
+      "available": true,
+      "id": 4
+    }
+  ]
+}
