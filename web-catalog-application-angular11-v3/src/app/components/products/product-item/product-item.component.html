@@ -4,8 +4,12 @@
   <td>{{itemProductInput.name}}</td>
   <td>{{itemProductInput.price}}</td>
   <td>{{itemProductInput.quantity}}</td>
-  <td>{{itemProductInput.selected}}</td>
-  <td>{{itemProductInput.available}}</td>
+  <td>
+    <span [ngClass]="itemProductInput.selected?'fa fa-check':''"></span>
+  </td>
+  <td>
+    <span [ngClass]="itemProductInput.available?'fa fa-check':''"></span>
+  </td>
   <td>
     <button (click)="onSelect(itemProductInput)" [ngClass]="itemProductInput.selected?'btn-success':'btn-danger'" class="btn btn-sm">
       <span *ngIf="itemProductInput.selected">Unselect</span>

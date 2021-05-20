@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Observable} from 'rxjs';
 import {ActionEvent, AppDataState, DataStateEnum, ProductActionsTypes} from '../../../state/product.state';
 import {Product} from '../../../models/product.model';
+import {EventDriverService} from '../../../state/event.driver.service';
 
 @Component({
   selector: 'app-products-list',
@@ -11,33 +12,38 @@ import {Product} from '../../../models/product.model';
 export class ProductsListComponent implements OnInit {
 
   @Input() public listProductsInput$: Observable<AppDataState<Product[]>> | null = null;
-   @Output() productEventEmitterListProduct: EventEmitter<ActionEvent> = new EventEmitter();
+  // @Output() productEventEmitterListProduct: EventEmitter<ActionEvent> = new EventEmitter();
 
   public readonly dataStateEnum: typeof DataStateEnum = DataStateEnum;
 
 
-  constructor() { }
+  constructor( ) { }
 
   ngOnInit(): void {
   }
 
   /*
   onSelect(prd: Product): void{
-     this.productEventEmitterListProduct.emit({type: ProductActionsTypes.SELECT_PRODUCT, PayloadParamFun: prd});
+     // this.productEventEmitterListProduct.emit({type: ProductActionsTypes.SELECT_PRODUCT, PayloadParamFun: prd});
+         this.eventDriverServiceList.publishEvent({type: ProductActionsTypes.SELECT_PRODUCT, PayloadParamFun: prd});
+
   }
 
   onDelete(prd: Product): void {
-    this.productEventEmitterListProduct.emit({type: ProductActionsTypes.DELETE_PRODUCT, PayloadParamFun: prd});
+    // this.productEventEmitterListProduct.emit({type: ProductActionsTypes.DELETE_PRODUCT, PayloadParamFun: prd});
+    this.eventDriverServiceList.publishEvent({type: ProductActionsTypes.DELETE_PRODUCT, PayloadParamFun: prd});
+
   }
 
   onEdit(prd: Product): void{
-    this.productEventEmitterListProduct.emit({type: ProductActionsTypes.EDIT_PRODUCT, PayloadParamFun: prd});
+    // this.productEventEmitterListProduct.emit({type: ProductActionsTypes.EDIT_PRODUCT, PayloadParamFun: prd});
+    this.eventDriverServiceList.publishEvent({type: ProductActionsTypes.EDIT_PRODUCT, PayloadParamFun: prd});
   }
-*/
 
 
 
   onActionEvent($event: ActionEvent): void  {
-    this.productEventEmitterListProduct.emit($event);
+   this.productEventEmitterListProduct.emit($event);
   }
+  */
 }
