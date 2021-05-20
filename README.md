@@ -1,47 +1,17 @@
-# Application V3 utlisant le framework angular 11  ( projet avec décomposition de composants et utlisation de NGRX )
+# Application V3 utlisant le framework angular 11  ( projet avec décomposition de composants et utlisation de subsribe/publish de EventSubjectService RxJS )
+![](doc/images/outputinput.jpg)
 
-**Input** : signifie pour un composant donné de rececoir des données d'un autres composants
-
-**Outup** : Signifie qu'un composant emet un evenement vers le composant qui l'instancie ( ou lui fait appel dans sa page html)
-
- 
- 
- #### Avantage et inconvenient de Input et Output
-**Avantage:** decompositions de l'application par composants au lieu d'un unique compoant
-
-**Inconvenient:**  La decomposition de l'application en composants plus petits induit des appels en cascade pour remonté tous la branche jusqu'à l'appel de la fonction principale.
-
+ ````shell script
+λ ng g s services/event.driver
+CREATE src/app/services/event.driver.service.spec.ts (387 bytes)
+CREATE src/app/services/event.driver.service.ts (141 bytes)
+````
 
 https://ultimatecourses.com/blog/angular-ngfor-async-pipe
-
-Emettre un evenement sur sa sortie. Exemple select, delete , edit ....  dans le composant **Products-List.Component.ts**
-
-````angular2
-  @Output() productEventEmitterListProduct: EventEmitter<ActionEvent> = new EventEmitter();
-````
-Recevoir des données sur son entrée dans le composant **Products-List.Component.ts**. pour exemple listProductsInput va lui etre affecté la liste des produit dans le composant principal **Products.Component.ts**, qu'il devra ensuite affiché. 
-
-````angular2
-  @Input() public listProductsInput$: Observable<AppDataState<Product[]>> | null = null;
-````
-
-dans le composant principal **Products.Component.html**
-
-````angular2
-<app-products-list  [listProductsInput$]="products$"  (productEventEmitterListProduct)="onActionEventProductsList($event)"></app-products-list>
-````
-
-**[listProductsInput$]=products$**:  fait reférence à **Input**
-
-**(productEventEmitterListProduct)=onActionEventProductsList($event)**: fait réfénrece à **Output**
-
-
-
 
 ## Application angular 11
 
 ![](doc/images/application.jpg)
-
 
 ## Angular version
 ````angular2
@@ -371,7 +341,6 @@ declaration d'une variable **Observable** , il faut au niveau du code html intro
 ````
 
 
-
 ## recupération de l'id de l'url
 
 il faut faire appelle à la calsse ActivatedRoute.snpashot.params.id
@@ -382,15 +351,9 @@ il faut faire appelle à la calsse ActivatedRoute.snpashot.params.id
 
 ![](doc/images/inputoutput0.jpg)
 
-![](doc/images/inputoutput1.jpg)
 
-![](doc/images/inputoutput2.jpg)
-
-![](doc/images/inputoutput3.jpg)
-
-## Etat de l'application: methode ngRx. ( préféré). projet v3  ( subscriber et publisher )
-![](doc/images/ngrx.jpg)
-le défaut de la méthode **input output** d'Angular deviens assez compliquer pour de grosse application. Il faut donc préféré **ngRx** à la place qui s'appuye sur **EventSubjectService**
+## Etat de l'application: methode RxJS.  projet v3  ( subscriber et publisher )
+le défaut de la méthode **input output** d'Angular deviens assez compliquer pour de grosse application. Il faut donc préféré **rxjs** à la place qui s'appuye sur **EventSubjectService**
 ![](doc/images/outputinput.jpg)
 
 

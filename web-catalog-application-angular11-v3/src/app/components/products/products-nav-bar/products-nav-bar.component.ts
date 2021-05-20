@@ -34,7 +34,6 @@ export class ProductsNavBarComponent implements OnInit {
   onNewProducts(): void {
    // this.productEventEmitterNarBar.emit({type: ProductActionsTypes.NEW_PRODUCT });
     this.eventDriverService.publishEvent({type: ProductActionsTypes.NEW_PRODUCT});
-
   }
 
   onSearch(dataForm: any): void {
